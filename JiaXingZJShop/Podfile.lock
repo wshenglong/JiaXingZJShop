@@ -1,28 +1,63 @@
 PODS:
-  - Alamofire (4.8.0)
-  - HandyJSON (4.2.1)
-  - Kingfisher (5.0.1)
+  - MJExtension (3.0.15.1)
+  - MJRefresh (3.1.15.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
   - SVProgressHUD (2.2.5)
+  - UMCAnalytics (6.0.1):
+    - UMCCommon
+  - UMCCommon (2.0.0)
+  - UMCSecurityPlugins (1.0.6)
+  - UMCShare/Core (6.9.5):
+    - UMCCommon
+  - UMCShare/Social/ReducedQQ (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedSina (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/SMS (6.9.5):
+    - UMCCommon
+    - UMCShare/Core
 
 DEPENDENCIES:
-  - Alamofire
-  - HandyJSON
-  - Kingfisher
+  - MJExtension
+  - MJRefresh
+  - SDWebImage (~> 3.8.2)
   - SVProgressHUD
+  - UMCAnalytics
+  - UMCCommon
+  - UMCSecurityPlugins
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedSina
+  - UMCShare/Social/ReducedWeChat
+  - UMCShare/Social/SMS
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - HandyJSON
-    - Kingfisher
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
     - SVProgressHUD
+    - UMCAnalytics
+    - UMCCommon
+    - UMCSecurityPlugins
+    - UMCShare
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
-  Kingfisher: 4f771421b9208185217550528a06fd48756cb7c2
+  MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
+  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  UMCAnalytics: c267acd9bb4a87e5f01735c158b63a617908f92e
+  UMCCommon: 79b5a614c958db367113eed5740109d9a98e1223
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  UMCShare: 552b29753f1b4da87b51d96545ed19e6263df397
 
-PODFILE CHECKSUM: 62ffdb4008827d045f3b878feb3eafddbf0d0a21
+PODFILE CHECKSUM: 5ed576ee20a8a6f28ea44fd14ad30357373f5b95
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

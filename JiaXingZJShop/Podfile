@@ -1,24 +1,21 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '9.0'
 
 target 'JiaXingZJShop' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for JiaXingZJShop
-# pod 'SnapKit'
-# pod 'Then'
-# pod 'Moya'
-pod 'Alamofire'
-pod 'HandyJSON'
-pod 'Kingfisher'
 pod 'SVProgressHUD'
-# pod 'Reusable'
-# pod 'LLCycleScrollView'
-# pod 'MJRefresh'
-# pod 'MBProgressHUD'
-# pod 'HMSegmentedControl'
-# pod 'IQKeyboardManagerSwift'
-# pod 'EmptyDataSet-Swift'
-# Pods for JiaxingShop
+pod 'UMCAnalytics'# 分享
+pod 'UMCCommon'# 依赖
+pod 'UMCSecurityPlugins'# 依赖
+pod 'UMCShare/Social/ReducedQQ'
+pod 'UMCShare/Social/ReducedWeChat'
+pod 'UMCShare/Social/SMS'
+pod 'UMCShare/Social/ReducedSina'
+pod 'MJRefresh'
+pod 'SDWebImage', '~> 3.8.2'
+pod 'MJExtension'
+
 end
