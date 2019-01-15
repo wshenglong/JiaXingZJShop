@@ -6,6 +6,7 @@ target 'JiaXingZJShop' do
   use_frameworks!
 
   # Pods for JiaXingZJShop
+pod 'Alamofire'
 pod 'SVProgressHUD'
 pod 'UMCAnalytics'# 分享
 pod 'UMCCommon'# 依赖

@@ -12,7 +12,7 @@
 //#import "UMSocial.h"
 #import <CoreLocation/CoreLocation.h>
 //#import "UMSocialSinaSSOHandler.h"
-#import "UMSocialWechatHandler.h"
-#import "UMSocialQQHandler.h"
+//#import "UMSocialWechatHandler.h"
+//#import "UMSocialQQHandler.h"
 #import "MJExtension.h"
 

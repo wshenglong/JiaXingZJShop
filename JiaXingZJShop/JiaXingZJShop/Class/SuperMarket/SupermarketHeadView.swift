@@ -1,12 +1,10 @@
 //
-//  SupermarketHeadView.swift
-//  LoveFreshBeen
+//  NetworkTools.swift
+//  JiaXingZJShop
 //
-//  Created by 维尼的小熊 on 16/1/12.
-//  Copyright © 2016年 tianzhongtao. All rights reserved.
-//  GitHub地址:https://github.com/ZhongTaoTian/LoveFreshBeen
-//  Blog讲解地址:http://www.jianshu.com/p/879f58fe3542
-//  小熊的新浪微博:http://weibo.com/5622363113/profile?topnav=1&wvr=6
+//  Created by jsonshenglong on 2019/1/15.
+//  Copyright © 2019年 jsonshenglong. All rights reserved.
+//
 
 import UIKit
 
@@ -20,7 +18,8 @@ class SupermarketHeadView: UITableViewHeaderFooterView {
         backgroundView = UIView()
         backgroundView?.backgroundColor = UIColor.clear
         
-        contentView.backgroundColor = UIColor(red: 240 / 255.0, green: 240 / 255.0, blue: 240 / 255.0, alpha: 0.8)
+        //contentView.backgroundColor = UIColor(red: 240 / 255.0, green: 240 / 255.0, blue: 240 / 255.0, alpha: 0.8)
+        contentView.backgroundColor = UIColor.blue
         buildTitleLabel()
         
     }

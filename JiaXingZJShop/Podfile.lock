@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.8.0)
   - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.7)
   - SDWebImage (3.8.2):
@@ -25,6 +26,7 @@ PODS:
     - UMCShare/Core
 
 DEPENDENCIES:
+  - Alamofire
   - MJExtension
   - MJRefresh
   - SDWebImage (~> 3.8.2)
@@ -39,6 +41,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - MJExtension
     - MJRefresh
     - SDWebImage
@@ -49,6 +52,7 @@ SPEC REPOS:
     - UMCShare
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
@@ -58,6 +62,6 @@ SPEC CHECKSUMS:
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: 552b29753f1b4da87b51d96545ed19e6263df397
 
-PODFILE CHECKSUM: 5ed576ee20a8a6f28ea44fd14ad30357373f5b95
+PODFILE CHECKSUM: 10e729a2a9b142b0b6d1e994501af810cf8d1eb1
 
 COCOAPODS: 1.6.0.beta.2
