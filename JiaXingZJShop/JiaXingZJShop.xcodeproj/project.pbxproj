@@ -174,6 +174,10 @@
 		0A2D85E321ECE5FD001F1B08 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2D85E221ECE5FC001F1B08 /* libsqlite3.tbd */; };
 		0A2D85E521ECE612001F1B08 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2D85E421ECE612001F1B08 /* libiconv.tbd */; };
 		0A64876421ED6ED700BB4451 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876321ED6ED700BB4451 /* NetworkTools.swift */; };
+		0A64876721EDB5A300BB4451 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876621EDB5A300BB4451 /* API.swift */; };
+		0A64876921EDB5B600BB4451 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876821EDB5B600BB4451 /* NetworkManager.swift */; };
+		0A6487BA21EDE36B00BB4451 /* UAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487B921EDE36B00BB4451 /* UAPI.swift */; };
+		0A6487BC21EDE38900BB4451 /* UModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BB21EDE38900BB4451 /* UModel.swift */; };
 		6D9CAAAFA04B538D9B0D1580 /* Pods_JiaXingZJShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -384,6 +388,10 @@
 		0A2D85E221ECE5FC001F1B08 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A2D85E421ECE612001F1B08 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		0A64876321ED6ED700BB4451 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		0A64876621EDB5A300BB4451 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		0A64876821EDB5B600BB4451 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0A6487B921EDE36B00BB4451 /* UAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAPI.swift; sourceTree = "<group>"; };
+		0A6487BB21EDE38900BB4451 /* UModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UModel.swift; sourceTree = "<group>"; };
 		47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiaXingZJShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B38E4B66B604AFDE0B0E02 /* Pods-JiaXingZJShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.release.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.release.xcconfig"; sourceTree = "<group>"; };
 		DB7EAE8FF3DBA90DCAB08A18 /* Pods-JiaXingZJShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.debug.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -450,6 +458,7 @@
 		0A2D840D21ECDDD5001F1B08 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				0A64876521EDB59300BB4451 /* Router */,
 				0A2D840E21ECDDD5001F1B08 /* SuperMarket */,
 				0A2D841621ECDDD5001F1B08 /* Home */,
 				0A2D842321ECDDD5001F1B08 /* FreshReserve */,
@@ -864,6 +873,17 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		0A64876521EDB59300BB4451 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0A64876621EDB5A300BB4451 /* API.swift */,
+				0A64876821EDB5B600BB4451 /* NetworkManager.swift */,
+				0A6487B921EDE36B00BB4451 /* UAPI.swift */,
+				0A6487BB21EDE38900BB4451 /* UModel.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		600BB39388AF83207827DE9C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,8 +995,11 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
@@ -985,8 +1008,11 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
@@ -1087,6 +1113,7 @@
 				0A2D852121ECDDD5001F1B08 /* CategoryCell.swift in Sources */,
 				0A2D859321ECDDD5001F1B08 /* SearchView.swift in Sources */,
 				0A2D859021ECDDD5001F1B08 /* QRCodeViewController.swift in Sources */,
+				0A6487BC21EDE38900BB4451 /* UModel.swift in Sources */,
 				0A2D857F21ECDDD5001F1B08 /* UIBarButtonItem+Extension.swift in Sources */,
 				0A2D855921ECDDD5001F1B08 /* OrderViewController.swift in Sources */,
 				0A2D857821ECDDD5001F1B08 /* GuideViewController.swift in Sources */,
@@ -1105,8 +1132,10 @@
 				0A2D857321ECDDD5001F1B08 /* HelpDetailViewController.swift in Sources */,
 				0A2D852521ECDDD5001F1B08 /* Supermarket.swift in Sources */,
 				0A2D859121ECDDD5001F1B08 /* PageScrollView.swift in Sources */,
+				0A64876921EDB5B600BB4451 /* NetworkManager.swift in Sources */,
 				0A2D857121ECDDD5001F1B08 /* MyOrderCell.swift in Sources */,
 				0A2D85C421ECDDD5001F1B08 /* SDWebImageDecoder.m in Sources */,
+				0A6487BA21EDE36B00BB4451 /* UAPI.swift in Sources */,
 				0A2D85A021ECDDD5001F1B08 /* MJRefreshBackGifFooter.m in Sources */,
 				0A2D856B21ECDDD5001F1B08 /* UserMessage.swift in Sources */,
 				0A2D859521ECDDD5001F1B08 /* SearchProducts.swift in Sources */,
@@ -1156,6 +1185,7 @@
 				0A2D855E21ECDDD5001F1B08 /* IdeaViewController.swift in Sources */,
 				0A2D85D021ECDDD5001F1B08 /* UIButton+WebCache.m in Sources */,
 				0A2D852E21ECDDD5001F1B08 /* WebViewController.swift in Sources */,
+				0A64876721EDB5A300BB4451 /* API.swift in Sources */,
 				0A2D858D21ECDDD5001F1B08 /* BaseNavigationController.swift in Sources */,
 				0A2D855521ECDDD5001F1B08 /* ShopCartSupermarketTableFooterView.swift in Sources */,
 				0A2D856421ECDDD5001F1B08 /* OrderStatuslViewController.swift in Sources */,
@@ -1297,23 +1327,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = JiaXingZJShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_4.4",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = jasonshenglong.JiaXingZJShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JiaXingZJShop/JiaXingZJShop-Bridging-Header.h";
@@ -1330,23 +1351,14 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = JiaXingZJShop/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/TencentOpenAPI",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/SinaSSO",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_Extra_Frameworks/Wechat",
-					"$(PROJECT_DIR)/JiaXingZJShop/Class/Vender/UMengSDK/UMSocial_Sdk_4.4",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = jasonshenglong.JiaXingZJShop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "JiaXingZJShop/JiaXingZJShop-Bridging-Header.h";
