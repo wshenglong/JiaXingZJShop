@@ -34,6 +34,8 @@ class Supermarket: NSObject, DictModelProtocol {
     
     class func searchCategoryMatchProducts(_ supermarketResouce: SupermarketResouce) -> [[Goods]]? {
         var arr = [[Goods]]()
+        //通过cate.id获取supermaketPesouce.catepories!
+        //根据 cate.id顺序取出所以排序也是一样
         let products = supermarketResouce.products
         for cate in supermarketResouce.categories! {
 //           let goodsArr = products!.value(forKey: cate.id!) as! [Goods]

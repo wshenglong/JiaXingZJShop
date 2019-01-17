@@ -6,11 +6,11 @@ target 'JiaXingZJShop' do
   use_frameworks!
 
   # Pods for JiaXingZJShop
-pod 'Moya'
+pod 'Alamofire'
 pod 'SVProgressHUD'
 pod 'MJRefresh'
 pod 'HandyJSON'
-pod 'SDWebImage', '~> 3.8.2'
+pod 'SDWebImage'
 pod 'MJExtension'
 
 end

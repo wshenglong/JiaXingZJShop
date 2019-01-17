@@ -36,6 +36,7 @@ class ProductsViewController: AnimationViewController {
     weak var delegate: ProductsViewControllerDelegate?
     var refreshUpPull:(() -> ())?
     
+    //商品模型组
     fileprivate var goodsArr: [[Goods]]? {
         didSet {
             productsTableView?.reloadData()
@@ -44,7 +45,7 @@ class ProductsViewController: AnimationViewController {
     
     var supermarketData: Supermarket? {
         didSet {
-            let aa = SupermarketResouce()
+            let aa = SupermarketResouce() //分类资源
             self.goodsArr = Supermarket.searchCategoryMatchProducts(supermarketData?.data ?? aa)
         }
     }
@@ -111,7 +112,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if goodsArr?.count > 0 {
-            return goodsArr![section].count
+            return goodsArr![section].count  //section.count无限row
         }
         
         return 0

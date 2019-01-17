@@ -173,11 +173,9 @@
 		0A2D85E121ECE5D6001F1B08 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2D85E021ECE5D6001F1B08 /* Security.framework */; };
 		0A2D85E321ECE5FD001F1B08 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2D85E221ECE5FC001F1B08 /* libsqlite3.tbd */; };
 		0A2D85E521ECE612001F1B08 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A2D85E421ECE612001F1B08 /* libiconv.tbd */; };
-		0A64876421ED6ED700BB4451 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876321ED6ED700BB4451 /* NetworkTools.swift */; };
-		0A64876721EDB5A300BB4451 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876621EDB5A300BB4451 /* API.swift */; };
-		0A64876921EDB5B600BB4451 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876821EDB5B600BB4451 /* NetworkManager.swift */; };
-		0A6487BA21EDE36B00BB4451 /* UAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487B921EDE36B00BB4451 /* UAPI.swift */; };
-		0A6487BC21EDE38900BB4451 /* UModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BB21EDE38900BB4451 /* UModel.swift */; };
+		0A64876921EDB5B600BB4451 /* aboutNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876821EDB5B600BB4451 /* aboutNetworkManager.swift */; };
+		0A6487BE21EF05F700BB4451 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BD21EF05F700BB4451 /* NetworkTools.swift */; };
+		0A6487C021EF0A8200BB4451 /* SuperMarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */; };
 		6D9CAAAFA04B538D9B0D1580 /* Pods_JiaXingZJShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -387,11 +385,9 @@
 		0A2D85E021ECE5D6001F1B08 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0A2D85E221ECE5FC001F1B08 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		0A2D85E421ECE612001F1B08 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
-		0A64876321ED6ED700BB4451 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
-		0A64876621EDB5A300BB4451 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		0A64876821EDB5B600BB4451 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		0A6487B921EDE36B00BB4451 /* UAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UAPI.swift; sourceTree = "<group>"; };
-		0A6487BB21EDE38900BB4451 /* UModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UModel.swift; sourceTree = "<group>"; };
+		0A64876821EDB5B600BB4451 /* aboutNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutNetworkManager.swift; sourceTree = "<group>"; };
+		0A6487BD21EF05F700BB4451 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
+		0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMarketModel.swift; sourceTree = "<group>"; };
 		47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiaXingZJShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B38E4B66B604AFDE0B0E02 /* Pods-JiaXingZJShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.release.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.release.xcconfig"; sourceTree = "<group>"; };
 		DB7EAE8FF3DBA90DCAB08A18 /* Pods-JiaXingZJShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.debug.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -480,7 +476,6 @@
 				0A2D840F21ECDDD5001F1B08 /* CategoryCell.swift */,
 				0A2D841021ECDDD5001F1B08 /* ProductsViewController.swift */,
 				0A2D841121ECDDD5001F1B08 /* SupermarketHeadView.swift */,
-				0A64876321ED6ED700BB4451 /* NetworkTools.swift */,
 				0A2D841221ECDDD5001F1B08 /* ProductCell.swift */,
 				0A2D841321ECDDD5001F1B08 /* Model */,
 				0A2D841521ECDDD5001F1B08 /* SupermarketViewController.swift */,
@@ -492,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2D841421ECDDD5001F1B08 /* Supermarket.swift */,
+				0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -539,6 +535,7 @@
 				0A2D842921ECDDD5001F1B08 /* ShareManager.swift */,
 				0A2D842A21ECDDD5001F1B08 /* ProgressHUDManager.swift */,
 				0A2D842B21ECDDD5001F1B08 /* FileToll.swift */,
+				0A6487BD21EF05F700BB4451 /* NetworkTools.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -876,10 +873,7 @@
 		0A64876521EDB59300BB4451 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				0A64876621EDB5A300BB4451 /* API.swift */,
-				0A64876821EDB5B600BB4451 /* NetworkManager.swift */,
-				0A6487B921EDE36B00BB4451 /* UAPI.swift */,
-				0A6487BB21EDE38900BB4451 /* UModel.swift */,
+				0A64876821EDB5B600BB4451 /* aboutNetworkManager.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -998,8 +992,6 @@
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
@@ -1011,8 +1003,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
@@ -1085,7 +1075,6 @@
 				0A2D85A121ECDDD5001F1B08 /* MJRefreshBackStateFooter.m in Sources */,
 				0A2D852221ECDDD5001F1B08 /* ProductsViewController.swift in Sources */,
 				0A2D853521ECDDD5001F1B08 /* UserShopCarTool.swift in Sources */,
-				0A64876421ED6ED700BB4451 /* NetworkTools.swift in Sources */,
 				0A2D859921ECDDD5001F1B08 /* LeftImageRightTextButton.swift in Sources */,
 				0A2D85CA21ECDDD5001F1B08 /* SDWebImagePrefetcher.m in Sources */,
 				0A2D85A521ECDDD5001F1B08 /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -1113,7 +1102,6 @@
 				0A2D852121ECDDD5001F1B08 /* CategoryCell.swift in Sources */,
 				0A2D859321ECDDD5001F1B08 /* SearchView.swift in Sources */,
 				0A2D859021ECDDD5001F1B08 /* QRCodeViewController.swift in Sources */,
-				0A6487BC21EDE38900BB4451 /* UModel.swift in Sources */,
 				0A2D857F21ECDDD5001F1B08 /* UIBarButtonItem+Extension.swift in Sources */,
 				0A2D855921ECDDD5001F1B08 /* OrderViewController.swift in Sources */,
 				0A2D857821ECDDD5001F1B08 /* GuideViewController.swift in Sources */,
@@ -1132,15 +1120,16 @@
 				0A2D857321ECDDD5001F1B08 /* HelpDetailViewController.swift in Sources */,
 				0A2D852521ECDDD5001F1B08 /* Supermarket.swift in Sources */,
 				0A2D859121ECDDD5001F1B08 /* PageScrollView.swift in Sources */,
-				0A64876921EDB5B600BB4451 /* NetworkManager.swift in Sources */,
+				0A64876921EDB5B600BB4451 /* aboutNetworkManager.swift in Sources */,
 				0A2D857121ECDDD5001F1B08 /* MyOrderCell.swift in Sources */,
 				0A2D85C421ECDDD5001F1B08 /* SDWebImageDecoder.m in Sources */,
-				0A6487BA21EDE36B00BB4451 /* UAPI.swift in Sources */,
 				0A2D85A021ECDDD5001F1B08 /* MJRefreshBackGifFooter.m in Sources */,
 				0A2D856B21ECDDD5001F1B08 /* UserMessage.swift in Sources */,
+				0A6487C021EF0A8200BB4451 /* SuperMarketModel.swift in Sources */,
 				0A2D859521ECDDD5001F1B08 /* SearchProducts.swift in Sources */,
 				0A2D853121ECDDD5001F1B08 /* HomeTableHeadView.swift in Sources */,
 				0A2D858221ECDDD5001F1B08 /* AnimationViewController.swift in Sources */,
+				0A6487BE21EF05F700BB4451 /* NetworkTools.swift in Sources */,
 				0A2D855621ECDDD5001F1B08 /* CostDetailView.swift in Sources */,
 				0A2D858C21ECDDD5001F1B08 /* YellowShopCarView.swift in Sources */,
 				0A2D853221ECDDD5001F1B08 /* ScheduleViewController.swift in Sources */,
@@ -1185,7 +1174,6 @@
 				0A2D855E21ECDDD5001F1B08 /* IdeaViewController.swift in Sources */,
 				0A2D85D021ECDDD5001F1B08 /* UIButton+WebCache.m in Sources */,
 				0A2D852E21ECDDD5001F1B08 /* WebViewController.swift in Sources */,
-				0A64876721EDB5A300BB4451 /* API.swift in Sources */,
 				0A2D858D21ECDDD5001F1B08 /* BaseNavigationController.swift in Sources */,
 				0A2D855521ECDDD5001F1B08 /* ShopCartSupermarketTableFooterView.swift in Sources */,
 				0A2D856421ECDDD5001F1B08 /* OrderStatuslViewController.swift in Sources */,

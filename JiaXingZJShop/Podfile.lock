@@ -1,25 +1,19 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.1)
   - HandyJSON (4.2.1)
   - MJExtension (3.0.15.1)
   - MJRefresh (3.1.15.7)
-  - Moya (12.0.1):
-    - Moya/Core (= 12.0.1)
-  - Moya/Core (12.0.1):
-    - Alamofire (~> 4.1)
-    - Result (~> 4.0)
-  - Result (4.1.0)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
+  - Alamofire
   - HandyJSON
   - MJExtension
   - MJRefresh
-  - Moya
-  - SDWebImage (~> 3.8.2)
+  - SDWebImage
   - SVProgressHUD
 
 SPEC REPOS:
@@ -28,21 +22,17 @@ SPEC REPOS:
     - HandyJSON
     - MJExtension
     - MJRefresh
-    - Moya
-    - Result
     - SDWebImage
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   HandyJSON: d0c5fc80204f29056d59d3e5c4587fa0b16b60a8
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: c183d88a47e435bd11a48f4e03c432a17c783a70
+PODFILE CHECKSUM: 95718e90e70102823e42a57daa9ed12e2975fc72
 
 COCOAPODS: 1.6.0.beta.2

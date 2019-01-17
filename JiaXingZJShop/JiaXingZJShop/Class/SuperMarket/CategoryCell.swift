@@ -4,7 +4,7 @@
 //
 //  Created by jsonshenglong on 2019/1/15.
 //  Copyright © 2019年 jsonshenglong. All rights reserved.
-//
+// 时来天地皆同力
 
 import UIKit
 
@@ -42,18 +42,30 @@ class CategoryCell: UITableViewCell {
         return lineView
         }()
 // MARK: 模型setter方法
-    var categorie: Categorie? {
+//    var categorie: Categorie? {
+//        didSet {
+//            nameLabel.text = categorie?.name
+//        }
+//    }
+    
+    var categorie: TabModel? {
         didSet {
-            nameLabel.text = categorie?.name
+            nameLabel.text = categorie?.category_name
         }
     }
+    
+    
+    
+    
+    
+    
     
 // MARK: Method
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubview(backImageView)
-        addSubview(lineView)
-        addSubview(yellowView)
+        addSubview(lineView)  //分割线
+        addSubview(yellowView) //左边line黄色
         addSubview(nameLabel)
     }
     

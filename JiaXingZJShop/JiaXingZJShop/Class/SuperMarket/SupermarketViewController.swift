@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import HandyJSON
 class SupermarketViewController: SelectedAdressViewController {
-    
+    private var tabModel = [TabModel]()
     fileprivate var supermarketData: Supermarket?
     fileprivate var categoryTableView: LFBTableView!
     fileprivate var productsVC: ProductsViewController!
@@ -66,9 +66,14 @@ class SupermarketViewController: SelectedAdressViewController {
         categoryTableView.dataSource = self
         categoryTableView.showsHorizontalScrollIndicator = false
         categoryTableView.showsVerticalScrollIndicator = false
+        //未实现注册 https://www.jianshu.com/p/d7436f4ea499
+        //contentInset https://www.jianshu.com/p/9f9b98faaf5b
         categoryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: NavigationH, right: 0)
         categoryTableView.isHidden = true;
         view.addSubview(categoryTableView)
+ 
+        
+
     }
     
     fileprivate func bulidProductsViewController() {
@@ -80,9 +85,19 @@ class SupermarketViewController: SelectedAdressViewController {
         
         weak var tmpSelf = self
         productsVC.refreshUpPull = {
-            let time = DispatchTime.now() + Double(Int64(1.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: time, execute: { () -> Void in
-                Supermarket.loadSupermarketData { (data, error) -> Void in
+                //
+                NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
+                    guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
+                    self.tabModel = responseModel.data!
+                    tmpSelf?.productsVC.productsTableView?.mj_header.endRefreshing()
+                    tmpSelf!.categoryTableView.reloadData()
+                    tmpSelf!.categoryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
+                })
+                //
+                
+                
+                
+              /*  Supermarket.loadSupermarketData { (data, error) -> Void in
                     if error == nil {
                         tmpSelf!.supermarketData = data
                         tmpSelf!.productsVC.supermarketData = data
@@ -90,16 +105,35 @@ class SupermarketViewController: SelectedAdressViewController {
                         tmpSelf!.categoryTableView.reloadData()
                         tmpSelf!.categoryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
                     }
-                }
-            })
+                }*/
+         
+
+            
         }
     }
     
     fileprivate func loadSupermarketData() {
-        let time = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: time) { () -> Void in
-            weak var tmpSelf = self
-            Supermarket.loadSupermarketData { (data, error) -> Void in
+             weak var tmpSelf = self
+            
+            NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
+                guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
+                self.tabModel = responseModel.data!
+                print("测试")
+                tmpSelf!.categoryTableView.reloadData()
+                tmpSelf!.categoryTableViewIsLoadFinish = true
+                tmpSelf!.productTableViewIsLoadFinish = true
+                if tmpSelf!.categoryTableViewIsLoadFinish && tmpSelf!.productTableViewIsLoadFinish {
+                    tmpSelf!.categoryTableView.isHidden = false
+                    tmpSelf!.productsVC.productsTableView!.isHidden = false
+                    tmpSelf!.productsVC.view.isHidden = false
+                    tmpSelf!.categoryTableView.isHidden = false
+                    ProgressHUDManager.dismiss()
+                    tmpSelf!.view.backgroundColor = LFBGlobalBackgroundColor
+                }
+                
+            })
+            
+            /*  Supermarket.loadSupermarketData { (data, error) -> Void in
                 if error == nil {
                     tmpSelf!.supermarketData = data
                     tmpSelf!.categoryTableView.reloadData()
@@ -116,8 +150,9 @@ class SupermarketViewController: SelectedAdressViewController {
                         tmpSelf!.view.backgroundColor = LFBGlobalBackgroundColor
                     }
                 }
-            }
-        }
+            } */
+            
+        
     }
     
     // MARK: - Private Method
@@ -135,13 +170,20 @@ class SupermarketViewController: SelectedAdressViewController {
 extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supermarketData?.data?.categories?.count ?? 0
+        //return supermarketData?.data?.categories?.count ?? 0
+        return tabModel.count ?? 0
+        print(tabModel.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = CategoryCell.cellWithTableView(tableView)
-        cell.categorie = supermarketData!.data!.categories![(indexPath as NSIndexPath).row]
+        //cell.categorie = supermarketData!.data!.categories![(indexPath as NSIndexPath).row]
+        cell.categorie = tabModel[indexPath.row]
+        var testcell = tabModel[indexPath.item]
+        print(testcell)
+        //cell.categorie = supermarketData!.data!.categories![indexPath.row]
         
+ 
         return cell
     }
     
@@ -151,9 +193,11 @@ extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if productsVC != nil {
-            productsVC.categortsSelectedIndexPath = indexPath
-        }
+        //关系实现
+//        if productsVC != nil {
+//            productsVC.categortsSelectedIndexPath = indexPath
+//        }
+       // print(indexPath)
     }
     
 }
