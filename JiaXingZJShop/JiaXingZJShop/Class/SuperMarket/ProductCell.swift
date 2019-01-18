@@ -58,6 +58,7 @@ class ProductCell: UITableViewCell {
         return lineView
         }()
     
+    //进入商品详情页面
     fileprivate var discountPriceView: DiscountPriceView?
 
     var addProductClick:((_ imageView: UIImageView) -> ())?
@@ -115,6 +116,7 @@ class ProductCell: UITableViewCell {
                 fineImageView.isHidden = true
             }
             
+            // 点击
             if discountPriceView != nil {
                 discountPriceView!.removeFromSuperview()
             }

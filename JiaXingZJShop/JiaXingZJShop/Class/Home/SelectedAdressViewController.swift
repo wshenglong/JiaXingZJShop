@@ -15,7 +15,7 @@ class SelectedAdressViewController: AnimationViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         if UserInfo.sharedUserInfo.hasDefaultAdress() {
             let titleView = AdressTitleView(frame: CGRect(x: 0, y: 0, width: 0, height: 30))
             titleView.setTitle(UserInfo.sharedUserInfo.defaultAdress()!.address!)
@@ -27,7 +27,7 @@ class SelectedAdressViewController: AnimationViewController {
         }
     }
     
-    // MARK: - Build UI
+    // MARK: - Build UI  //buildNavigationItemz 左边和右边
     fileprivate func buildNavigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem.barButton("扫一扫", titleColor: UIColor.black,
             image: UIImage(named: "icon_black_scancode")!, hightLightImage: nil,

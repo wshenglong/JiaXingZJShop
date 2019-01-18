@@ -6,6 +6,8 @@
 //  Copyright © 2019年 jsonshenglong. All rights reserved.
 
 import UIKit
+import Kingfisher
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -26,7 +28,7 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
+//首页焦点按钮
 class HotView: UIView {
 
     fileprivate let iconW = (ScreenWidth - 2 * HotViewMargin) * 0.25

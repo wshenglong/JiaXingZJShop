@@ -9,6 +9,7 @@
 //  小熊的新浪微博:http://weibo.com/5622363113/profile?topnav=1&wvr=6
 
 import UIKit
+import HandyJSON
 
 class HeadResources: NSObject, DictModelProtocol {
 
@@ -17,6 +18,7 @@ class HeadResources: NSObject, DictModelProtocol {
     @objc var data: HeadData?
     
     class func loadHomeHeadData(_ completion:(_ data: HeadResources?, _ error: NSError?) -> Void) {
+        
         let path = Bundle.main.path(forResource: "首页焦点按钮", ofType: nil)
         let data = try? Data(contentsOf: URL(fileURLWithPath: path!))
         if data != nil {
@@ -27,7 +29,15 @@ class HeadResources: NSObject, DictModelProtocol {
             completion(headResourcesDataModel, nil)
         }
     }
-
+ 
+    
+    
+    
+    
+    
+    
+    
+    
     static func customClassMapping() -> [String : String]? {
         return ["data" : "\(HeadData.self)"]
     }

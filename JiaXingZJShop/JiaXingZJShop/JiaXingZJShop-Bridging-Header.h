@@ -7,7 +7,7 @@
 //
 
 #import "SVProgressHUD.h"
-#import "UIImageView+WebCache.h"
+#import "UIImageView+WebCache.h"  // 使用SDWebImage
 #import "MJRefresh.h"
 //#import "UMSocial.h"
 #import <CoreLocation/CoreLocation.h>

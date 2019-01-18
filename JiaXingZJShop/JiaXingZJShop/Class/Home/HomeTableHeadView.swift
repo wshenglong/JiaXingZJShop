@@ -28,11 +28,14 @@ class HomeTableHeadView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 模型的set方法
-    var headData: HeadResources? {
+    // MARK: 模型的set方法  模型改变！
+    var headData: [AdvListModel]? {
         didSet {
+            //首页上部轮播图数据
             pageScrollView?.headData = headData
-            hotView!.headData = headData?.data
+            //下部数据展现
+            //hotView!.headData = headData?.data
+            
         }
     }
     // MARK: 初始化子控件

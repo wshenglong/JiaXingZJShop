@@ -9,8 +9,9 @@ class LFBCollectionView: UICollectionView {
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         
-        delaysContentTouches = false
-        canCancelContentTouches = true
+        //滑动滚动属性
+        delaysContentTouches = false  //立即传递
+        canCancelContentTouches = true //消息传递之后滚动
         
         let wrapView = subviews.first
         

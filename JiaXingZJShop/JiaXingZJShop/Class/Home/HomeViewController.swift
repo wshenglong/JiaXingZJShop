@@ -36,12 +36,18 @@ fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class HomeViewController: SelectedAdressViewController {
     fileprivate var flag: Int = -1
+    //顶部轮播图和焦点
     fileprivate var headView: HomeTableHeadView?
+    
+    //BaseCollectionView
     fileprivate var collectionView: LFBCollectionView!
     fileprivate var lastContentOffsetY: CGFloat = 0
     fileprivate var isAnimation: Bool = false
     fileprivate var headData: HeadResources?
     fileprivate var freshHot: FreshHot?
+    
+    private lazy var homeHeaderVM : HomeHeaderViewModel = HomeHeaderViewModel()
+    
     
     // MARK: - Life circle
     override func viewDidLoad() {
@@ -85,13 +91,21 @@ class HomeViewController: SelectedAdressViewController {
         headView?.delegate = self
         weak var tmpSelf = self
         
+        //MARK : - 设置数据来源
         HeadResources.loadHomeHeadData { (data, error) -> Void in
             if error == nil {
-                tmpSelf?.headView?.headData = data
+                //tmpSelf?.headView?.headData = data
                 tmpSelf?.headData = data
-                tmpSelf?.collectionView.reloadData()
+                //tmpSelf?.collectionView.reloadData()
             }
         }
+        homeHeaderVM.requestData {
+            
+            
+            tmpSelf?.headView?.headData = tmpSelf?.homeHeaderVM.advListModels
+                tmpSelf?.collectionView.reloadData()
+        }
+        
         
         collectionView.addSubview(headView!)
         FreshHot.loadFreshHotData { (data, error) -> Void in
@@ -136,7 +150,7 @@ class HomeViewController: SelectedAdressViewController {
             HeadResources.loadHomeHeadData { (data, error) -> Void in
                 if error == nil {
                     headDataLoadFinish = true
-                    tmpSelf?.headView?.headData = data
+                    //tmpSelf?.headView?.headData = data
                     tmpSelf?.headData = data
                     if headDataLoadFinish && freshHotLoadFinish {
                         tmpSelf?.collectionView.reloadData()

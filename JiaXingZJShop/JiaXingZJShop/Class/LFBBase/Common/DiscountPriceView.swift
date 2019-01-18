@@ -2,6 +2,7 @@
 //  DiscountPriceView.swift
 //  Created by jsonshenglong on 2019/1/15.
 //  Copyright © 2019年 jsonshenglong. All rights reserved.
+//商品详情页面
 import UIKit
 
 class DiscountPriceView: UIView {
@@ -42,6 +43,7 @@ class DiscountPriceView: UIView {
         
         marketPriceLabel?.addSubview(lineView!)
         
+        //价格
         priceLabel = UILabel()
         priceLabel?.font = HomeCollectionTextFont
         priceLabel!.textColor = UIColor.red

@@ -176,6 +176,8 @@
 		0A64876921EDB5B600BB4451 /* aboutNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A64876821EDB5B600BB4451 /* aboutNetworkManager.swift */; };
 		0A6487BE21EF05F700BB4451 /* NetworkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BD21EF05F700BB4451 /* NetworkTools.swift */; };
 		0A6487C021EF0A8200BB4451 /* SuperMarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */; };
+		0A6487C221F0719900BB4451 /* HomeHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */; };
+		0A6487C421F071F100BB4451 /* HomeHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */; };
 		6D9CAAAFA04B538D9B0D1580 /* Pods_JiaXingZJShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -388,6 +390,8 @@
 		0A64876821EDB5B600BB4451 /* aboutNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutNetworkManager.swift; sourceTree = "<group>"; };
 		0A6487BD21EF05F700BB4451 /* NetworkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTools.swift; sourceTree = "<group>"; };
 		0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMarketModel.swift; sourceTree = "<group>"; };
+		0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewModel.swift; sourceTree = "<group>"; };
+		0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderModel.swift; sourceTree = "<group>"; };
 		47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiaXingZJShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B38E4B66B604AFDE0B0E02 /* Pods-JiaXingZJShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.release.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.release.xcconfig"; sourceTree = "<group>"; };
 		DB7EAE8FF3DBA90DCAB08A18 /* Pods-JiaXingZJShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.debug.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -513,6 +517,8 @@
 			isa = PBXGroup;
 			children = (
 				0A2D842021ECDDD5001F1B08 /* HeadResources.swift */,
+				0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */,
+				0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */,
 				0A2D842121ECDDD5001F1B08 /* FreshHot.swift */,
 			);
 			path = Model;
@@ -990,6 +996,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1001,6 +1008,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1068,6 +1076,7 @@
 				0A2D857921ECDDD5001F1B08 /* CouponViewController.swift in Sources */,
 				0A2D858F21ECDDD5001F1B08 /* BuyView.swift in Sources */,
 				0A2D85A221ECDDD5001F1B08 /* MJRefreshBackNormalFooter.m in Sources */,
+				0A6487C421F071F100BB4451 /* HomeHeaderModel.swift in Sources */,
 				0A2D855821ECDDD5001F1B08 /* MineCell.swift in Sources */,
 				0A2D852721ECDDD5001F1B08 /* HotView.swift in Sources */,
 				0A2D859421ECDDD5001F1B08 /* NotSearchProductsView.swift in Sources */,
@@ -1170,6 +1179,7 @@
 				0A2D859821ECDDD5001F1B08 /* AnimationTabBarController.swift in Sources */,
 				0A2D85A821ECDDD5001F1B08 /* MJRefreshGifHeader.m in Sources */,
 				0A2D85AD21ECDDD5001F1B08 /* MJRefreshComponent.m in Sources */,
+				0A6487C221F0719900BB4451 /* HomeHeaderViewModel.swift in Sources */,
 				0A2D855A21ECDDD5001F1B08 /* AboltAuthorViewController.swift in Sources */,
 				0A2D855E21ECDDD5001F1B08 /* IdeaViewController.swift in Sources */,
 				0A2D85D021ECDDD5001F1B08 /* UIButton+WebCache.m in Sources */,

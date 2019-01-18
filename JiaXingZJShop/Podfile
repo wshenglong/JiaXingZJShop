@@ -12,5 +12,5 @@ pod 'MJRefresh'
 pod 'HandyJSON'
 pod 'SDWebImage'
 pod 'MJExtension'
-
+pod 'Kingfisher'
 end

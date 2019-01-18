@@ -42,7 +42,7 @@ class PageScrollView: UIView {
     fileprivate var timer: Timer?
     fileprivate var placeholderImage: UIImage?
     fileprivate var imageClick:((_ index: Int) -> ())?
-    var headData: HeadResources? {
+    var headData: [AdvListModel]? {
         didSet {
             
             if timer != nil {
@@ -50,8 +50,8 @@ class PageScrollView: UIView {
                 timer = nil
             }
             
-            if headData?.data?.focus?.count >= 0 {
-                pageControl.numberOfPages = (headData?.data?.focus?.count)!
+            if headData?.count >= 0 {
+                pageControl.numberOfPages = (headData?.count)!
                 pageControl.currentPage = 0
                 updatePageScrollView()
                 
@@ -144,8 +144,10 @@ class PageScrollView: UIView {
             }
             
             imageView.tag = index
-            if headData?.data?.focus?.count > 0 && headData?.data?.focus?.count >  index {
-                imageView.sd_setImage(with: URL.init(string: headData?.data?.focus![index].img ?? ""), placeholderImage: placeholderImage)
+            if headData?.count > 0 && headData?.count >  index {
+                imageView.sd_setImage(with: URL.init(string: headData?[index].adv_image ?? ""), placeholderImage: placeholderImage)
+                //设置图片来源
+                //print("PageScrollView.headData \(headData?[index].adv_image)")
             }
         }
         
