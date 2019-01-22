@@ -9,7 +9,7 @@ class UserShopCarTool: NSObject {
 
     fileprivate static let instance = UserShopCarTool()
     
-    fileprivate var supermarketProducts = [Goods]()
+    fileprivate var supermarketProducts = [GoodHotModel]()
     
     class var sharedUserShopCar: UserShopCarTool {
         return instance
@@ -23,9 +23,9 @@ class UserShopCarTool: NSObject {
         return supermarketProducts.count == 0
     }
     
-    func addSupermarkProductToShopCar(_ goods: Goods) {
+    func addSupermarkProductToShopCar(_ goods: GoodHotModel) {
         for everyGoods in supermarketProducts {
-            if everyGoods.id == goods.id {
+            if everyGoods.goods_id == goods.goods_id {
                 return
             }
         }
@@ -33,7 +33,7 @@ class UserShopCarTool: NSObject {
         supermarketProducts.append(goods)
     }
     
-    func getShopCarProducts() -> [Goods] {
+    func getShopCarProducts() -> [GoodHotModel] {
         return supermarketProducts
     }
     
@@ -41,10 +41,10 @@ class UserShopCarTool: NSObject {
         return supermarketProducts.count
     }
     
-    func removeSupermarketProduct(_ goods: Goods) {
+    func removeSupermarketProduct(_ goods: GoodHotModel) {
         for i in 0..<supermarketProducts.count {
             let everyGoods = supermarketProducts[i]
-            if everyGoods.id == goods.id {
+            if everyGoods.goods_id == goods.goods_id {
                 supermarketProducts.remove(at: i)
                 NotificationCenter.default.post(name: Notification.Name(rawValue: LFBShopCarDidRemoveProductNSNotification), object: nil, userInfo: nil)
                 return
@@ -55,7 +55,7 @@ class UserShopCarTool: NSObject {
     func getAllProductsPrice() -> String {
         var allPrice: Double = 0
         for goods in supermarketProducts {
-            allPrice = allPrice + Double(goods.partner_price!)! * Double(goods.userBuyNumber)
+            allPrice = allPrice + Double(goods.price)! * Double(goods.userBuyNumber)
         }
         
         return "\(allPrice)".cleanDecimalPointZear()

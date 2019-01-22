@@ -7,6 +7,7 @@
 
 import UIKit
 
+//商品详情
 class ProductDetailViewController: BaseViewController {
     
     fileprivate let grayBackgroundColor = UIColor.colorWithCustom(248, g: 248, b: 248)
@@ -24,7 +25,7 @@ class ProductDetailViewController: BaseViewController {
     fileprivate var detailImageView: UIImageView?
     fileprivate var bottomView: UIView?
     fileprivate var yellowShopCar: YellowShopCarView?
-    fileprivate var goods: Goods?
+    fileprivate var goods: GoodHotModel?
     fileprivate var buyView: BuyView?
     fileprivate let shareActionSheet: LFBActionSheet = LFBActionSheet()
     
@@ -143,16 +144,17 @@ class ProductDetailViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(goods: Goods) {
+    convenience init(goods: GoodHotModel) {
         self.init()
         self.goods = goods
-        productImageView?.sd_setImage(with: URL(string: goods.img!), placeholderImage: UIImage(named: "v2_placeholder_square"))
-        titleNameLabel?.text = goods.name
-        priceView = DiscountPriceView(price: goods.price, marketPrice: goods.market_price)
+        productImageView?.sd_setImage(with: URL(string: goods.pic_cover_small), placeholderImage: UIImage(named: "v2_placeholder_square"))
+        titleNameLabel?.text = goods.goods_name
+        priceView = DiscountPriceView(price: goods.price, marketPrice: goods.promotion_price)
         priceView?.frame = CGRect(x: 15, y: 40, width: ScreenWidth * 0.6, height: 40)
         nameView.addSubview(priceView!)
         
-        if goods.pm_desc == "买一赠一" {
+        //买一赠一
+        if goods.category_name == "买一赠一" {
             presentView?.frame.size.height = 50
             presentView?.isHidden = false
         } else {
@@ -162,8 +164,8 @@ class ProductDetailViewController: BaseViewController {
             promptView?.frame.origin.y -= 50
         }
         
-        brandTitleLabel?.text = goods.brand_name
-        detailTitleLabel?.text = goods.specifics
+        brandTitleLabel?.text = goods.category_name
+        detailTitleLabel?.text = goods.promotion_type
         
         detailImageView = UIImageView(image: UIImage(named: "aaaa"))
         let scale: CGFloat = 320.0 / ScreenWidth
@@ -171,7 +173,7 @@ class ProductDetailViewController: BaseViewController {
         scrollView?.addSubview(detailImageView!)
         scrollView?.contentSize = CGSize(width: ScreenWidth, height: detailImageView!.frame.maxY + 50 + NavigationH)
         
-        buildNavigationItem(goods.name!)
+        buildNavigationItem(goods.goods_name)
         
         buyView = BuyView(frame: CGRect(x: 85, y: 12, width: 80, height: 25))
         buyView!.zearIsShow = true

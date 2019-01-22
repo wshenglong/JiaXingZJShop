@@ -32,14 +32,14 @@ class Supermarket: NSObject, DictModelProtocol {
         return ["data" : "\(SupermarketResouce.self)"]
     }
     
-    class func searchCategoryMatchProducts(_ supermarketResouce: SupermarketResouce) -> [[Goods]]? {
-        var arr = [[Goods]]()
+    class func searchCategoryMatchProducts(_ supermarketResouce: SupermarketResouce) -> [[GoodHotModel]]? {
+        var arr = [[GoodHotModel]]()
         //通过cate.id获取supermaketPesouce.catepories!
         //根据 cate.id顺序取出所以排序也是一样
         let products = supermarketResouce.products
         for cate in supermarketResouce.categories! {
 //           let goodsArr = products!.value(forKey: cate.id!) as! [Goods]
-            let goodsArr = Goods.mj_objectArray(withKeyValuesArray: products!.value(forKey: cate.id!)) as! [Goods]
+            let goodsArr = Goods.mj_objectArray(withKeyValuesArray: products!.value(forKey: cate.id!)) as! [GoodHotModel]
             arr.append(goodsArr)
         }
 //        arr = Goods.mj_objectArray(withKeyValuesArray: products) as! [[Goods]]

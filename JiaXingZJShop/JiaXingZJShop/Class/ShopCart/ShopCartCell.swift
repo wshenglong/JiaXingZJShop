@@ -11,15 +11,15 @@ class ShopCartCell: UITableViewCell {
     fileprivate let priceLabel = UILabel()
     fileprivate let buyView    = BuyView()
     
-    var goods: Goods? {
+    var goods: GoodHotModel? {
         didSet {
-            if goods?.is_xf == 1 {
-                titleLabel.text = "[精选]" + goods!.name!
+            if goods?.category_id == 1 {
+                titleLabel.text = "[精选]" + goods!.goods_name
             } else {
-                titleLabel.text = goods?.name
+                titleLabel.text = goods?.goods_name
             }
             
-            priceLabel.text = "$" + goods!.price!.cleanDecimalPointZear()
+            priceLabel.text = "$" + goods!.price.cleanDecimalPointZear()
             
             buyView.goods = goods
         }

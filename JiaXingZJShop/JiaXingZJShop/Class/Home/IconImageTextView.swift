@@ -5,16 +5,18 @@
 
 import UIKit
 
+
+//设置 首页焦点按钮
 class IconImageTextView: UIView {
 
     fileprivate var imageView: UIImageView?
     fileprivate var textLabel: UILabel?
     fileprivate var placeholderImage: UIImage?
 
-    var activitie: Activities? {
+    var activitie: AdvsinfoModel? {
         didSet {
-           textLabel?.text = activitie?.name
-            imageView?.sd_setImage(with: URL(string: activitie!.img!)!, placeholderImage: placeholderImage)
+           textLabel?.text = activitie?.adv_title
+            imageView?.sd_setImage(with: URL(string: activitie!.adv_image)!, placeholderImage: placeholderImage)
         }
     }
     

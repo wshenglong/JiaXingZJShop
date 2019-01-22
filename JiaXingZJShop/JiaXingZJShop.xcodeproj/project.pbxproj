@@ -178,6 +178,7 @@
 		0A6487C021EF0A8200BB4451 /* SuperMarketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */; };
 		0A6487C221F0719900BB4451 /* HomeHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */; };
 		0A6487C421F071F100BB4451 /* HomeHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */; };
+		0A6487C621F2F3FB00BB4451 /* FreshHotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6487C521F2F3FB00BB4451 /* FreshHotModel.swift */; };
 		6D9CAAAFA04B538D9B0D1580 /* Pods_JiaXingZJShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -392,6 +393,7 @@
 		0A6487BF21EF0A8200BB4451 /* SuperMarketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperMarketModel.swift; sourceTree = "<group>"; };
 		0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderViewModel.swift; sourceTree = "<group>"; };
 		0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderModel.swift; sourceTree = "<group>"; };
+		0A6487C521F2F3FB00BB4451 /* FreshHotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshHotModel.swift; sourceTree = "<group>"; };
 		47F0404FA24B813502BDE9D0 /* Pods_JiaXingZJShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JiaXingZJShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49B38E4B66B604AFDE0B0E02 /* Pods-JiaXingZJShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.release.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.release.xcconfig"; sourceTree = "<group>"; };
 		DB7EAE8FF3DBA90DCAB08A18 /* Pods-JiaXingZJShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JiaXingZJShop.debug.xcconfig"; path = "Target Support Files/Pods-JiaXingZJShop/Pods-JiaXingZJShop.debug.xcconfig"; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				0A6487C121F0719900BB4451 /* HomeHeaderViewModel.swift */,
 				0A6487C321F071F100BB4451 /* HomeHeaderModel.swift */,
 				0A2D842121ECDDD5001F1B08 /* FreshHot.swift */,
+				0A6487C521F2F3FB00BB4451 /* FreshHotModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 			isa = PBXGroup;
 			children = (
 				0A2D847F21ECDDD5001F1B08 /* AnimationViewController.swift */,
+				0A2D849621ECDDD5001F1B08 /* AnimationTabBarController.swift */,
 				0A2D848021ECDDD5001F1B08 /* BaseViewController.swift */,
 				0A2D848121ECDDD5001F1B08 /* UpImageDownTextButton.swift */,
 				0A2D848221ECDDD5001F1B08 /* LFBActionSheet.swift */,
@@ -709,7 +713,6 @@
 				0A2D848F21ECDDD5001F1B08 /* SearchViewController */,
 				0A2D849421ECDDD5001F1B08 /* AdressTitleView.swift */,
 				0A2D849521ECDDD5001F1B08 /* LoadProgressAnimationView.swift */,
-				0A2D849621ECDDD5001F1B08 /* AnimationTabBarController.swift */,
 				0A2D849721ECDDD5001F1B08 /* LeftImageRightTextButton.swift */,
 			);
 			path = Common;
@@ -1070,6 +1073,7 @@
 				0A2D858E21ECDDD5001F1B08 /* DiscountPriceView.swift in Sources */,
 				0A2D856221ECDDD5001F1B08 /* MineTabeHeadView.swift in Sources */,
 				0A2D859F21ECDDD5001F1B08 /* UIView+MJExtension.m in Sources */,
+				0A6487C621F2F3FB00BB4451 /* FreshHotModel.swift in Sources */,
 				0A2D858A21ECDDD5001F1B08 /* LFBTableView.swift in Sources */,
 				0A2D85A421ECDDD5001F1B08 /* MJRefreshAutoGifFooter.m in Sources */,
 				0A2D853A21ECDDD5001F1B08 /* ADViewController.swift in Sources */,

@@ -9,7 +9,7 @@ class SearchProducts: NSObject, DictModelProtocol {
     var code: Int = -1
     var msg: String?
     var reqid: String?
-    var data: [Goods]?
+    var data: [GoodHotModel]?  //更换
     
     class func loadSearchData(_ completion:((_ data: SearchProducts?, _ error: NSError?) -> Void)) {
         let path = Bundle.main.path(forResource: "促销", ofType: nil)

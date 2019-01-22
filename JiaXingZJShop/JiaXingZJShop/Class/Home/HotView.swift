@@ -49,26 +49,26 @@ class HotView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-// MARK: 模型的Set方法
-    var headData: HeadData? {
+// MARK: 模型的Set方法  设置数据
+    var headData: [AdvsinfoModel]? {
         didSet {
-            if headData?.icons?.count > 0 {
+            if headData?.count > 0 {
                 
-                if headData!.icons!.count % 4 != 0 {
-                    self.rows = headData!.icons!.count / 4 + 1
+                if headData!.count % 4 != 0 {
+                    self.rows = headData!.count / 4 + 1
                 } else {
-                    self.rows = headData!.icons!.count / 4
+                    self.rows = headData!.count / 4
                 }
                 var iconX: CGFloat = 0
                 var iconY: CGFloat = 0
 
-                for i in 0..<headData!.icons!.count {
+                for i in 0..<headData!.count {
                     iconX = CGFloat(i % 4) * iconW + HotViewMargin
                     iconY = iconH * CGFloat(i / 4)
                     let icon = IconImageTextView(frame: CGRect(x: iconX, y: iconY, width: iconW, height: iconH), placeholderImage: UIImage(named: "icon_icons_holder")!)
                     
                     icon.tag = i
-                    icon.activitie = headData!.icons![i]
+                    icon.activitie = headData![i]
                     let tap = UITapGestureRecognizer(target: self, action: #selector(iconClick(_:)))
                     icon.addGestureRecognizer(tap)
                     addSubview(icon)
@@ -86,6 +86,7 @@ class HotView: UIView {
 // MARK:- Action
     @objc func iconClick(_ tap: UITapGestureRecognizer) {
         if iconClick != nil {
+            //跳转
             iconClick!(tap.view!.tag)
         }
     }

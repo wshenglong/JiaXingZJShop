@@ -33,11 +33,23 @@ class HomeTableHeadView: UIView {
         didSet {
             //首页上部轮播图数据
             pageScrollView?.headData = headData
-            //下部数据展现
-            //hotView!.headData = headData?.data
+
+        }
+    }
+     //下部数据展现
+    var hotViewData : [AdvsinfoModel]? {
+        didSet {
+            //首页上部轮播图数据
+            hotView?.headData = hotViewData
             
         }
     }
+    
+    
+    
+    
+    
+    
     // MARK: 初始化子控件
     func buildPageScrollView() {
         weak var tmpSelf = self

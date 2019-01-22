@@ -24,8 +24,8 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
-class AnimationViewController: BaseViewController {
+// 继承 CAAnimationDelegate 实现 动画加载之后多余的图片 析构掉
+class AnimationViewController: BaseViewController,CAAnimationDelegate {
     
     var animationLayers: [CALayer]?
     
@@ -69,7 +69,7 @@ class AnimationViewController: BaseViewController {
         let groupAnimation = CAAnimationGroup()
         groupAnimation.animations = [positionAnimation, transformAnimation, opacityAnimation];
         groupAnimation.duration = 0.8
-        groupAnimation.delegate = self as? CAAnimationDelegate;
+        groupAnimation.delegate = self
         
         transitionLayer.add(groupAnimation, forKey: "cartParabola")
     }
@@ -115,7 +115,7 @@ class AnimationViewController: BaseViewController {
         let groupAnimation = CAAnimationGroup()
         groupAnimation.animations = [positionAnimation, transformAnimation, opacityAnimation];
         groupAnimation.duration = 0.8
-        groupAnimation.delegate = self as? CAAnimationDelegate;
+        groupAnimation.delegate = self
         
         transitionLayer.add(groupAnimation, forKey: "BigShopCarAnimation")
     }

@@ -100,17 +100,17 @@ class ProductCell: UITableViewCell {
     }
 
     // MARK: - 模型set方法
-    var goods: Goods? {
+    var goods: GoodHotModel? {
         didSet {
-            goodsImageView.sd_setImage(with: URL(string: goods!.img!), placeholderImage: UIImage(named: "v2_placeholder_square"))
-            nameLabel.text = goods?.name
-            if goods!.pm_desc == "买一赠一" {
+            goodsImageView.sd_setImage(with: URL(string: goods!.pic_cover_small), placeholderImage: UIImage(named: "v2_placeholder_square"))
+            nameLabel.text = goods?.goods_name
+            if goods!.category_name == "买一赠一" {
                 giveImageView.isHidden = false
             } else {
                 giveImageView.isHidden = true
             }
             
-            if goods!.is_xf == 1 {
+            if goods!.category_id == 1 {
                 fineImageView.isHidden = false
             } else {
                 fineImageView.isHidden = true
@@ -120,10 +120,10 @@ class ProductCell: UITableViewCell {
             if discountPriceView != nil {
                 discountPriceView!.removeFromSuperview()
             }
-            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.market_price)
+            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.promotion_price)
             addSubview(discountPriceView!)
             
-            specificsLabel.text = goods?.specifics
+            specificsLabel.text = goods?.category_name
             buyView.goods = goods
         }
     }

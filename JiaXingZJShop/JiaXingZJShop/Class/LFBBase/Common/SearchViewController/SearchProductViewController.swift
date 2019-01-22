@@ -42,7 +42,7 @@ class SearchProductViewController: AnimationViewController {
     fileprivate var historySearchView: SearchView?
     fileprivate let cleanHistoryButton: UIButton = UIButton()
     fileprivate var searchCollectionView: LFBCollectionView?
-    fileprivate var goodses: [Goods]?
+    fileprivate var goodses: [GoodHotModel]?
     fileprivate var collectionHeadView: NotSearchProductsView?
     fileprivate var yellowShopCar: YellowShopCarView?
     
@@ -305,7 +305,7 @@ extension SearchProductViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCell
-        cell.goods = goodses![(indexPath as NSIndexPath).row]
+        cell.goods = goodses![(indexPath).row]
         weak var tmpSelf = self
         cell.addButtonClick = ({ (imageView) -> () in
             tmpSelf?.addProductsToBigShopCarAnimation(imageView)

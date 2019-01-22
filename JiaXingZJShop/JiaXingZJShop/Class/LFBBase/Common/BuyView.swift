@@ -115,7 +115,7 @@ class BuyView: UIView {
     }
     
     /// 商品模型Set方法
-    var goods: Goods? {
+    var goods: GoodHotModel? {
         didSet {
             buyNumber = goods!.userBuyNumber
             
@@ -154,7 +154,7 @@ class BuyView: UIView {
     @objc func addGoodsButtonClick() {
         
         if buyNumber >= goods?.number {
-            NotificationCenter.default.post(name: Notification.Name(rawValue: HomeGoodsInventoryProblem), object: goods?.name)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: HomeGoodsInventoryProblem), object: goods?.goods_name)
             return
         }
         

@@ -37,7 +37,7 @@ class ProductsViewController: AnimationViewController {
     var refreshUpPull:(() -> ())?
     
     //商品模型组
-    fileprivate var goodsArr: [[Goods]]? {
+    fileprivate var goodsArr: [[GoodHotModel]]? {
         didSet {
             productsTableView?.reloadData()
         }
@@ -124,7 +124,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ProductCell.cellWithTableView(tableView)
-        let goods = goodsArr![(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        let goods = goodsArr![(indexPath).section][(indexPath).row]
         cell.goods = goods
         
         weak var tmpSelf = self

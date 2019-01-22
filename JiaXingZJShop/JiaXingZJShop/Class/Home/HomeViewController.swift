@@ -44,7 +44,7 @@ class HomeViewController: SelectedAdressViewController {
     fileprivate var lastContentOffsetY: CGFloat = 0
     fileprivate var isAnimation: Bool = false
     fileprivate var headData: HeadResources?
-    fileprivate var freshHot: FreshHot?
+    //fileprivate var freshHot: FreshHot?
     
     private lazy var homeHeaderVM : HomeHeaderViewModel = HomeHeaderViewModel()
     
@@ -92,27 +92,38 @@ class HomeViewController: SelectedAdressViewController {
         weak var tmpSelf = self
         
         //MARK : - 设置数据来源
-        HeadResources.loadHomeHeadData { (data, error) -> Void in
-            if error == nil {
-                //tmpSelf?.headView?.headData = data
-                tmpSelf?.headData = data
-                //tmpSelf?.collectionView.reloadData()
-            }
-        }
+//        HeadResources.loadHomeHeadData { (data, error) -> Void in
+//            if error == nil {
+//                //tmpSelf?.headView?.headData = data
+//                tmpSelf?.headData = data
+//                //tmpSelf?.collectionView.reloadData()
+//            }
+//        }
         homeHeaderVM.requestData {
             
-            
+           
             tmpSelf?.headView?.headData = tmpSelf?.homeHeaderVM.advListModels
+            
                 tmpSelf?.collectionView.reloadData()
+                //需要添加
+                //tmpSelf?.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 64, right: 0)
+        }
+        
+        
+        homeHeaderVM.requestAdvsliatData {
+           
+             tmpSelf?.headView?.hotViewData = tmpSelf?.homeHeaderVM.advsinfoModel
         }
         
         
         collectionView.addSubview(headView!)
-        FreshHot.loadFreshHotData { (data, error) -> Void in
-            tmpSelf?.freshHot = data
-            tmpSelf?.collectionView.reloadData()
-            tmpSelf?.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 64, right: 0)
-        }
+        
+        //请求热门cell数据
+//        FreshHot.loadFreshHotData { (data, error) -> Void in
+//            tmpSelf?.freshHot = data
+//            tmpSelf?.collectionView.reloadData()
+//
+//        }
     }
     
     fileprivate func buildCollectionView() {
@@ -140,7 +151,7 @@ class HomeViewController: SelectedAdressViewController {
     @objc func headRefresh() {
         headView?.headData = nil
         headData = nil
-        freshHot = nil
+        //freshHot = nil 设置
         var headDataLoadFinish = false
         var freshHotLoadFinish = false
         
@@ -161,8 +172,8 @@ class HomeViewController: SelectedAdressViewController {
             
             FreshHot.loadFreshHotData { (data, error) -> Void in
                 freshHotLoadFinish = true
-                tmpSelf?.freshHot = data
-                if headDataLoadFinish && freshHotLoadFinish {
+                //tmpSelf?.freshHot = data
+                if headDataLoadFinish {
                     tmpSelf?.collectionView.reloadData()
                     tmpSelf?.collectionView.mj_header.endRefreshing()
                 }
@@ -215,83 +226,87 @@ extension HomeViewController: HomeTableHeadViewDelegate {
 // MARK:- UICollectionViewDelegate UICollectionViewDataSource
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    //返回对应的Section的item的个数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if headData?.data?.activities?.count <= 0 || freshHot?.data?.count <= 0 {
+        if  homeHeaderVM.goods_hot_list.count <= 0 {
             return 0
+        } else {
+            return homeHeaderVM.goods_hot_list.count
         }
+
         
-        if section == 0 {
-            return headData?.data?.activities?.count ?? 0
-        } else if section == 1 {
-            return freshHot?.data?.count ?? 0
-        }
-        
-        return 0
+      
     }
-    
+    //返回对应的item的UICollectionViewCell,cells为自定义
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! HomeCell
         if headData?.data?.activities?.count <= 0 {
             return cell
         }
         
-        if (indexPath as NSIndexPath).section == 0 {
-            cell.activities = headData!.data!.activities![(indexPath as NSIndexPath).row]
-        } else if (indexPath as NSIndexPath).section == 1 {
-            cell.goods = freshHot!.data![(indexPath as NSIndexPath).row]
+        //根据section选择加载ImageView的Cell,还是商品的Cell
+        //MARK: - 根据全材页面取消掉imageView
+        if (indexPath).section == 0 {
+            cell.goods = homeHeaderVM.goods_hot_list[(indexPath).row]
             weak var tmpSelf = self
             cell.addButtonClick = ({ (imageView) -> () in
                 tmpSelf?.addProductsAnimation(imageView)
             })
         }
+
+        
         
         return cell
     }
     
+    //返回Sections的个数
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if headData?.data?.activities?.count <= 0 || freshHot?.data?.count <= 0 {
+        if  homeHeaderVM.goods_hot_list.count <= 0 {
             return 0
         }
         
-        return 2
+        return 1
     }
-    
+    //布局代理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemSize = CGSize.zero
-        if (indexPath as NSIndexPath).section == 0 {
-            itemSize = CGSize(width: ScreenWidth - HomeCollectionViewCellMargin * 2, height: 140)
-        } else if (indexPath as NSIndexPath).section == 1 {
+        //取消掉imageview
+        if (indexPath).section == 0 {
             itemSize = CGSize(width: (ScreenWidth - HomeCollectionViewCellMargin * 2) * 0.5 - 4, height: 250)
         }
+
         
         return itemSize
     }
     
+    //// 设置section头视图的参考大小，与tableheaderview类似
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: ScreenWidth, height: HomeCollectionViewCellMargin)
-        } else if section == 1 {
+        
+        
+      
             return CGSize(width: ScreenWidth, height: HomeCollectionViewCellMargin * 2)
-        }
+      
         
-        return CGSize.zero
+        
     }
     
+    //
+    // 设置section尾视图的参考大小，与tablefooterview类似
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-        if section == 0 {
-            return CGSize(width: ScreenWidth, height: HomeCollectionViewCellMargin)
-        } else if section == 1 {
+       
+     
             return CGSize(width: ScreenWidth, height: HomeCollectionViewCellMargin * 5)
-        }
         
-        return CGSize.zero
+        
+        
+        
     }
     
-    
+    //显示cell时的动画
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        if (indexPath as NSIndexPath).section == 0 && ((indexPath as NSIndexPath).row == 0 || (indexPath as NSIndexPath).row == 1) {
+        if (indexPath as NSIndexPath).row == 1 {
             return
         }
         
@@ -309,14 +324,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         })
     }
     
+    // 即将有组头或组尾显示
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 1 && headData != nil && freshHot != nil && isAnimation {
+        if (indexPath).section == 0 && homeHeaderVM.goods_hot_list != nil && isAnimation {
             startAnimation(view, offsetY: 60, duration: 0.8)
         }
     }
     
+    
+    
+     // 返回组头或者组尾视图，同样用复用机制
+    
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if (indexPath as NSIndexPath).section == 1 && kind == UICollectionView.elementKindSectionHeader {
+        if (indexPath as NSIndexPath).section == 0 && kind == UICollectionView.elementKindSectionHeader {
             let headView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerView", for: indexPath) as! HomeCollectionHeaderView
             
             return headView
@@ -324,7 +345,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "footerView", for: indexPath) as! HomeCollectionFooterView
         
-        if (indexPath as NSIndexPath).section == 1 && kind == UICollectionView.elementKindSectionFooter {
+        if (indexPath as NSIndexPath).section == 0 && kind == UICollectionView.elementKindSectionFooter {
             footerView.showLabel()
             footerView.tag = 100
         } else {
@@ -359,14 +380,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    //代理方法：item点击时d将代理此方法
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if (indexPath as NSIndexPath).section == 0 {
-            let webVC = WebViewController(navigationTitle: headData!.data!.activities![(indexPath as NSIndexPath).row].name!, urlStr: headData!.data!.activities![(indexPath as NSIndexPath).row].customURL!)
-            navigationController?.pushViewController(webVC, animated: true)
-        } else {
-            let productVC = ProductDetailViewController(goods: freshHot!.data![(indexPath as NSIndexPath).row])
+    
+            let productVC = ProductDetailViewController(goods: homeHeaderVM.goods_hot_list[(indexPath).row])
             navigationController?.pushViewController(productVC, animated: true)
-        }
+        
     }
 }
 

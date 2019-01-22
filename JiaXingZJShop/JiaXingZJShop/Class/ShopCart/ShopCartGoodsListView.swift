@@ -23,7 +23,7 @@ class ShopCartGoodsListView: UIView {
             
             buildLineView(CGRect(x: 15, y: lastViewY, width: ScreenWidth - 15, height: 0.5))
             
-            if goods.pm_desc != "买一赠一" {
+            if goods.category_name != "买一赠一" {
                 let goodsDetailView = PayGoodsDetailView(frame: CGRect(x: 0, y: lastViewY + 10, width: ScreenWidth, height: 20))
                 goodsDetailView.goods = goods
                 addSubview(goodsDetailView)
@@ -31,13 +31,14 @@ class ShopCartGoodsListView: UIView {
                 goodsHeight += 40
             } else {
                 let goodsDetailView = PayGoodsDetailView(frame: CGRect(x: 0, y: lastViewY + 10, width: ScreenWidth, height: 20))
-                goods.pm_desc = ""
+                //goods.pm_desc = ""
                 goodsDetailView.goods = goods
                 addSubview(goodsDetailView)
                 lastViewY += 30
                 
                 let giftView = PayGoodsDetailView(frame: CGRect(x: 0, y: lastViewY, width: ScreenWidth, height: 20))
-                goods.pm_desc = "买一赠一"
+                //
+                //goods.pm_desc = "买一赠一"
                 giftView.goods = goods
                 addSubview(giftView)
                 lastViewY += 30
@@ -90,18 +91,18 @@ class PayGoodsDetailView: UIView {
     
     var isShowImageView = false
     
-    var goods: Goods? {
+    var goods: GoodHotModel? {
         didSet {
-            if goods?.is_xf == 1 {
-                titleLabel.text = "[精选]" + (goods?.name)!
+            if goods?.category_id == 1 {
+                titleLabel.text = "[精选]" + (goods?.goods_name)!
             } else {
-                titleLabel.text = goods?.name
+                titleLabel.text = goods?.goods_name
             }
             
             numberLabel.text = "x" + "\(goods!.userBuyNumber)"
-            priceLabel.text = "$" + (goods!.price)!.cleanDecimalPointZear()
+            priceLabel.text = "$" + (goods!.price).cleanDecimalPointZear()
             
-            if !(goods!.pm_desc == "买一赠一") {
+            if !(goods!.category_name == "买一赠一") {
                 giftImageView.isHidden = true
                 isShowImageView = false
                 layoutSubviews()
@@ -109,7 +110,7 @@ class PayGoodsDetailView: UIView {
                 giftImageView.isHidden = false
                 isShowImageView = true
                 priceLabel.isHidden = true
-                titleLabel.text = "[精选]" + (goods?.name)! + "[赠]"
+                titleLabel.text = "[精选]" + (goods?.goods_name)! + "[赠]"
             }
         }
     }

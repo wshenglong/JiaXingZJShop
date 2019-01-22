@@ -42,7 +42,7 @@ class HomeCollectionHeaderView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        titleLabel.text = "新鲜热卖"
+        titleLabel.text = "热卖商品"
         titleLabel.textAlignment = NSTextAlignment.left
         titleLabel.font = UIFont.systemFont(ofSize: 14)
         titleLabel.frame = CGRect(x: 10, y: 0, width: 200, height: 20)

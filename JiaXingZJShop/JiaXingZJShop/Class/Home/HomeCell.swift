@@ -5,6 +5,8 @@
 
 import UIKit
 
+//首页热门cell
+
 enum HomeCellTyep: Int {
     case horizontal = 0
     case vertical = 1
@@ -102,12 +104,13 @@ class HomeCell: UICollectionViewCell {
         }
     }
     
-    var goods: Goods? {
+    var goods: GoodHotModel? {
         didSet {
             self.type = .vertical
-            goodsImageView.sd_setImage(with: URL(string: goods!.img!), placeholderImage: UIImage(named: "v2_placeholder_square"))
-            nameLabel.text = goods?.name
-            if goods!.pm_desc == "买一赠一" {
+            goodsImageView.sd_setImage(with: URL(string: goods!.pic_cover_small), placeholderImage: UIImage(named: "v2_placeholder_square"))
+            //默认占位图
+            nameLabel.text = goods?.goods_name
+            if goods?.shop_name == "买一赠一" {
                 giveImageView.isHidden = false
             } else {
                 
@@ -116,10 +119,10 @@ class HomeCell: UICollectionViewCell {
             if discountPriceView != nil {
                 discountPriceView!.removeFromSuperview()
             }
-            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.market_price)
+            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.promotion_price)
             addSubview(discountPriceView!)
             
-            specificsLabel.text = goods?.specifics
+            specificsLabel.text = goods?.category_name
             buyView.goods = goods
         }
     }

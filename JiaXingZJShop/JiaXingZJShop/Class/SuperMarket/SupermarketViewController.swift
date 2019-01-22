@@ -118,7 +118,7 @@ class SupermarketViewController: SelectedAdressViewController {
             NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
                 guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
                 self.tabModel = responseModel.data!
-                print("测试")
+               
                 tmpSelf!.categoryTableView.reloadData()
                 tmpSelf!.categoryTableViewIsLoadFinish = true
                 tmpSelf!.productTableViewIsLoadFinish = true
@@ -172,7 +172,7 @@ extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return supermarketData?.data?.categories?.count ?? 0
         return tabModel.count ?? 0
-        print(tabModel.count)
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -180,7 +180,7 @@ extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource 
         //cell.categorie = supermarketData!.data!.categories![(indexPath as NSIndexPath).row]
         cell.categorie = tabModel[indexPath.row]
         var testcell = tabModel[indexPath.item]
-        print(testcell)
+       
         //cell.categorie = supermarketData!.data!.categories![indexPath.row]
         
  
