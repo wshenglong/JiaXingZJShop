@@ -271,9 +271,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     //布局代理
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemSize = CGSize.zero
-        //取消掉imageview
+        //取消掉imageview homecell 大小
         if (indexPath).section == 0 {
-            itemSize = CGSize(width: (ScreenWidth - HomeCollectionViewCellMargin * 2) * 0.5 - 4, height: 250)
+            itemSize = CGSize(width: (ScreenWidth - HomeCollectionViewCellMargin * 2) * 0.5 - 4, height: 280)
         }
 
         

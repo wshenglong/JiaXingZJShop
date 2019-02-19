@@ -43,8 +43,10 @@ struct GoodHotModel: HandyJSON {
     var promotion_price : String = "" //
     var price : String = ""      //规格最低价
     var promotion_type : String = ""   //
+    var market_price : String = "" //市场价
     var pic_cover_small : String = "" //商品图片
     var shop_name : String = "" //店铺名称
+    var stock : Int = 0       //当前总数量
     var sku_list: [SkuList]? //SKU规格值列表
     
     //*************************商品模型辅助属性**********************************

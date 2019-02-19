@@ -2,7 +2,7 @@
 //  DiscountPriceView.swift
 //  Created by jsonshenglong on 2019/1/15.
 //  Copyright © 2019年 jsonshenglong. All rights reserved.
-//商品详情页面
+// 商品价格模块
 import UIKit
 
 class DiscountPriceView: UIView {
@@ -59,22 +59,22 @@ class DiscountPriceView: UIView {
         self.init()
         
         if price != nil && price?.count != 0 {
-            priceLabel!.text = "$" + price!.cleanDecimalPointZear()
+            priceLabel!.text = "￥" + price!
             priceLabel!.sizeToFit()
         }
         
         if marketPrice != nil && marketPrice?.count  != 0 {
-            marketPriceLabel?.text = "$" + marketPrice!.cleanDecimalPointZear()
+            marketPriceLabel?.text = "￥" + marketPrice!
             hasMarketPrice = true
             marketPriceLabel?.sizeToFit()
         } else {
             hasMarketPrice = false
         }
-        
+        //市场价是否显示
         if marketPrice == price {
             hasMarketPrice = false
         } else {
-            hasMarketPrice = true
+            hasMarketPrice = false  //true 显示
         }
         
         marketPriceLabel?.isHidden = !hasMarketPrice

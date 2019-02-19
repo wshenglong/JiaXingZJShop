@@ -58,12 +58,14 @@ class ProductsViewController: AnimationViewController {
     
     
     // MARK: - Lift Cycle
+    // 超市商品分类列表
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(shopCarBuyProductNumberDidChange), name: NSNotification.Name(rawValue: LFBShopCarBuyProductNumberDidChangeNotification), object: nil)
         
-        view = UIView(frame: CGRect(x: ScreenWidth * 0.25, y: 0, width: ScreenWidth * 0.75, height: ScreenHeight - NavigationH))
+        // y : 位置
+        view = UIView(frame: CGRect(x: ScreenWidth * 0.25, y: 100, width: ScreenWidth * 0.75, height: ScreenHeight - NavigationH))
         buildProductsTableView()
     }
     

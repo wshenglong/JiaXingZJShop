@@ -119,7 +119,8 @@ class HomeCell: UICollectionViewCell {
             if discountPriceView != nil {
                 discountPriceView!.removeFromSuperview()
             }
-            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.promotion_price)
+            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.market_price)
+            
             addSubview(discountPriceView!)
             
             specificsLabel.text = goods?.category_name

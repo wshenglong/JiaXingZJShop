@@ -16,7 +16,7 @@ extension String {
         var offset = newStr.length - 1
         while offset > 0 {
             s = newStr.substring(with: NSMakeRange(offset, 1)) as NSString
-            if s.isEqual(to: "0") || s.isEqual(to: ".") {
+            if s.isEqual(to: ".") || s.isEqual(to: "0") {
                 offset -= 1
             } else {
                 break

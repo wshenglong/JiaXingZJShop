@@ -38,7 +38,7 @@ extension HomeHeaderViewModel {
             for (index, _) in self.goods_hot_list.enumerated() {
                 //拼接完整的url图片数据
                 self.goods_hot_list[index].pic_cover_small = baseURLS + self.goods_hot_list[index].pic_cover_small
-                print(self.goods_hot_list[index].pic_cover_small)
+                
             }
             
             

@@ -119,7 +119,7 @@ class BuyView: UIView {
         didSet {
             buyNumber = goods!.userBuyNumber
             
-            if goods?.number <= 0 {
+            if goods?.stock <= 0 {
                 showSupplementLabel()
             } else {
                 hideSupplementLabel()
@@ -153,7 +153,7 @@ class BuyView: UIView {
     // MARK: - Action
     @objc func addGoodsButtonClick() {
         
-        if buyNumber >= goods?.number {
+        if buyNumber >= goods?.stock {
             NotificationCenter.default.post(name: Notification.Name(rawValue: HomeGoodsInventoryProblem), object: goods?.goods_name)
             return
         }

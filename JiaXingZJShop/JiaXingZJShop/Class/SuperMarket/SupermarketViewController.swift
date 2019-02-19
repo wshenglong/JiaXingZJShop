@@ -12,6 +12,8 @@ class SupermarketViewController: SelectedAdressViewController {
     private var tabModel = [TabModel]()
     fileprivate var supermarketData: Supermarket?
     fileprivate var categoryTableView: LFBTableView!
+    
+    
     fileprivate var productsVC: ProductsViewController!
     
     // flag
@@ -59,8 +61,10 @@ class SupermarketViewController: SelectedAdressViewController {
     }
     
     // MARK:- Creat UI
+
+    
     fileprivate func bulidCategoryTableView() {
-        categoryTableView = LFBTableView(frame: CGRect(x: 0, y: 0, width: ScreenWidth * 0.25, height: ScreenHeight), style: .plain)
+        categoryTableView = LFBTableView(frame: CGRect(x: 0, y: 100, width: ScreenWidth * 0.25, height: ScreenHeight), style: .plain)
         categoryTableView.backgroundColor = LFBGlobalBackgroundColor
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
@@ -71,10 +75,13 @@ class SupermarketViewController: SelectedAdressViewController {
         categoryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: NavigationH, right: 0)
         categoryTableView.isHidden = true;
         view.addSubview(categoryTableView)
- 
         
-
+        
+        
     }
+    
+    
+    
     
     fileprivate func bulidProductsViewController() {
         productsVC = ProductsViewController()
@@ -179,7 +186,7 @@ extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource 
         let cell = CategoryCell.cellWithTableView(tableView)
         //cell.categorie = supermarketData!.data!.categories![(indexPath as NSIndexPath).row]
         cell.categorie = tabModel[indexPath.row]
-        var testcell = tabModel[indexPath.item]
+      
        
         //cell.categorie = supermarketData!.data!.categories![indexPath.row]
         
