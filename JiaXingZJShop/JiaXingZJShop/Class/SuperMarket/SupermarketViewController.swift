@@ -8,215 +8,133 @@
 
 import UIKit
 import HandyJSON
+import LTScrollView
+private let glt_iphoneX = (UIScreen.main.bounds.height >= 812.0)
 class SupermarketViewController: SelectedAdressViewController {
-    private var tabModel = [TabModel]()
-    fileprivate var supermarketData: Supermarket?
-    fileprivate var categoryTableView: LFBTableView!
+    private var SupermarkettabModel = [TabModel]()
+    private var titles: [String] = {
+        return []
+    }()
+    
+    private lazy var viewControllers: [UIViewController] = {
+        var vcs = [UIViewController]()
+        for (index, _) in titles.enumerated() {
+            let vc = PageContentVC()
+            vc.PageContentVCDate = SupermarkettabModel[index]
+            vcs.append(vc)
+            
+        }
+        
+        
+        return vcs
+    }()
+    private lazy var layout: LTLayout = {[unowned self] in
+        let layout = LTLayout()
+        layout.sliderWidth = 40
+        layout.titleMargin = 40
+        //layout.isAverage = true
+        //layout.titleViewBgColor =  LFBGlobalBackgroundColor
+        layout.titleColor = UIColor.colorWithCustom(100, g: 100, b: 100)
+        layout.titleSelectColor = LFBTextBlackColor
+        layout.bottomLineColor = LFBNavigationYellowColor
+        layout.titleFont = UIFont.systemFont(ofSize: 14)
+       
+
+        /* 更多属性设置请参考 LTLayout 中 public 属性说明 */
+        return layout
+    }()
+    
+    private func managerReact() -> CGRect {
+        let statusBarH = UIApplication.shared.statusBarFrame.size.height
+        let Y: CGFloat = statusBarH + 44
+        let H: CGFloat = glt_iphoneX ? (view.bounds.height - Y - 34) : view.bounds.height - Y
+        return CGRect(x: 0, y: 0, width: view.bounds.width, height: H)
+    }
+    private lazy var simpleManager : LTSimpleManager? = {
+        let simpleManager = LTSimpleManager(frame: managerReact(), viewControllers: viewControllers, titles: titles, currentViewController: self, layout: layout)
+        /* 设置代理 监听滚动 */
+        simpleManager.delegate = self
+        return simpleManager
+    }()
     
     
-    fileprivate var productsVC: ProductsViewController!
-    
-    // flag
-    fileprivate var categoryTableViewIsLoadFinish = false
-    fileprivate var productTableViewIsLoadFinish  = false
-  
     // MARK : Life cycle
     override func viewDidLoad() {
+ 
         super.viewDidLoad()
         
-        addNotification()
-
         showProgressHUD()
-                
-        bulidCategoryTableView()
-        
-        bulidProductsViewController()
-        
         loadSupermarketData()
+        automaticallyAdjustsScrollViewInsets = false
+        
+        
+        //view.addSubview(viewControllers)
+        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if productsVC.productsTableView != nil {
-            productsVC.productsTableView?.reloadData()
-        }
-        
-//        NotificationCenter.default.post(name: Notification.Name(rawValue: "LFBSearchViewControllerDeinit"), object: nil)
+
+
         navigationController?.navigationBar.barTintColor = LFBNavigationYellowColor
     }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    fileprivate func addNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(shopCarBuyProductNumberDidChange), name: NSNotification.Name(rawValue: LFBShopCarBuyProductNumberDidChangeNotification), object: nil)   
-    }
-    
-    @objc func shopCarBuyProductNumberDidChange() {
-        if productsVC.productsTableView != nil {
-            productsVC.productsTableView!.reloadData()
-        }
-    }
-    
-    // MARK:- Creat UI
 
-    
-    fileprivate func bulidCategoryTableView() {
-        categoryTableView = LFBTableView(frame: CGRect(x: 0, y: 100, width: ScreenWidth * 0.25, height: ScreenHeight), style: .plain)
-        categoryTableView.backgroundColor = LFBGlobalBackgroundColor
-        categoryTableView.delegate = self
-        categoryTableView.dataSource = self
-        categoryTableView.showsHorizontalScrollIndicator = false
-        categoryTableView.showsVerticalScrollIndicator = false
-        //未实现注册 https://www.jianshu.com/p/d7436f4ea499
-        //contentInset https://www.jianshu.com/p/9f9b98faaf5b
-        categoryTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: NavigationH, right: 0)
-        categoryTableView.isHidden = true;
-        view.addSubview(categoryTableView)
-        
-        
-        
-    }
-    
-    
-    
-    
-    fileprivate func bulidProductsViewController() {
-        productsVC = ProductsViewController()
-        productsVC.delegate = self
-        productsVC.view.isHidden = true
-        addChild(productsVC)
-        view.addSubview(productsVC.view)
-        
-        weak var tmpSelf = self
-        productsVC.refreshUpPull = {
-                //
-                NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
-                    guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
-                    self.tabModel = responseModel.data!
-                    tmpSelf?.productsVC.productsTableView?.mj_header.endRefreshing()
-                    tmpSelf!.categoryTableView.reloadData()
-                    tmpSelf!.categoryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-                })
-                //
-                
-                
-                
-              /*  Supermarket.loadSupermarketData { (data, error) -> Void in
-                    if error == nil {
-                        tmpSelf!.supermarketData = data
-                        tmpSelf!.productsVC.supermarketData = data
-                        tmpSelf?.productsVC.productsTableView?.mj_header.endRefreshing()
-                        tmpSelf!.categoryTableView.reloadData()
-                        tmpSelf!.categoryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .top)
-                    }
-                }*/
-         
+//    deinit {
+//        NotificationCenter.default.removeObserver(self)
+//    }
 
-            
-        }
-    }
-    
-    fileprivate func loadSupermarketData() {
-             weak var tmpSelf = self
-            
-            NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
-                guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
-                self.tabModel = responseModel.data!
-               
-                tmpSelf!.categoryTableView.reloadData()
-                tmpSelf!.categoryTableViewIsLoadFinish = true
-                tmpSelf!.productTableViewIsLoadFinish = true
-                if tmpSelf!.categoryTableViewIsLoadFinish && tmpSelf!.productTableViewIsLoadFinish {
-                    tmpSelf!.categoryTableView.isHidden = false
-                    tmpSelf!.productsVC.productsTableView!.isHidden = false
-                    tmpSelf!.productsVC.view.isHidden = false
-                    tmpSelf!.categoryTableView.isHidden = false
-                    ProgressHUDManager.dismiss()
-                    tmpSelf!.view.backgroundColor = LFBGlobalBackgroundColor
-                }
-                
-            })
-            
-            /*  Supermarket.loadSupermarketData { (data, error) -> Void in
-                if error == nil {
-                    tmpSelf!.supermarketData = data
-                    tmpSelf!.categoryTableView.reloadData()
-//                    tmpSelf!.categoryTableView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .bottom)
-                    tmpSelf!.productsVC.supermarketData = data
-                    tmpSelf!.categoryTableViewIsLoadFinish = true
-                    tmpSelf!.productTableViewIsLoadFinish = true
-                    if tmpSelf!.categoryTableViewIsLoadFinish && tmpSelf!.productTableViewIsLoadFinish {
-                        tmpSelf!.categoryTableView.isHidden = false
-                        tmpSelf!.productsVC.productsTableView!.isHidden = false
-                        tmpSelf!.productsVC.view.isHidden = false
-                        tmpSelf!.categoryTableView.isHidden = false
-                        ProgressHUDManager.dismiss()
-                        tmpSelf!.view.backgroundColor = LFBGlobalBackgroundColor
-                    }
-                }
-            } */
-            
-        
-    }
-    
-    // MARK: - Private Method
     fileprivate func showProgressHUD() {
         ProgressHUDManager.setBackgroundColor(UIColor.colorWithCustom(230, g: 230, b: 230))
         view.backgroundColor = UIColor.white
         if !ProgressHUDManager.isVisible() {
             ProgressHUDManager.showWithStatus("正在加载中")
+            //simpleManager?.removeFromSuperview()
+             //simpleManager = nil
         }
+       
         
     }
+    
+    
+    fileprivate func loadSupermarketData() {
+        weak var tmpSelf = self
+        
+        NetworkTools.requestData(URLString: "http://jc.cdyso.com:8888/index.php/api/goods/goodsclassificationlist", type: .get, finishedCallback: { (result) in
+            guard let responseModel = JSONDeserializer<responseModel>.deserializeFrom(json: result as? String) else {return}
+            self.SupermarkettabModel = responseModel.data!
+            for supermodel in self.SupermarkettabModel {
+                self.titles.append(supermodel.category_name)
+                
+            }
+            ProgressHUDManager.dismiss()
+            self.view.addSubview(self.simpleManager!)
+         
+        })
+   
+    }
+
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension SupermarketViewController: UITableViewDelegate, UITableViewDataSource {
+extension SupermarketViewController: LTSimpleScrollViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return supermarketData?.data?.categories?.count ?? 0
-        return tabModel.count ?? 0
-       
+    //MARK: 滚动代理方法
+    func glt_scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //        print("offset -> ", scrollView.contentOffset.y)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = CategoryCell.cellWithTableView(tableView)
-        //cell.categorie = supermarketData!.data!.categories![(indexPath as NSIndexPath).row]
-        cell.categorie = tabModel[indexPath.row]
-      
-       
-        //cell.categorie = supermarketData!.data!.categories![indexPath.row]
-        
- 
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 45
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //关系实现
-//        if productsVC != nil {
-//            productsVC.categortsSelectedIndexPath = indexPath
+    //MARK: 控制器刷新事件代理方法  刷新事件
+//    func glt_refreshScrollView(_ scrollView: UIScrollView, _ index: Int) {
+//        //注意这里循环引用问题。
+//        scrollView.mj_header = MJRefreshNormalHeader {[weak scrollView] in
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+//                //print("对应控制器的刷新自己玩吧，这里就不做处理了🙂-----\(scrollView)")
+//                self.simpleManager!.removeFromSuperview()
+//                //self.simpleManager = nil
+//                self.loadSupermarketData()
+//                scrollView?.mj_header.endRefreshing()
+//
+//            })
 //        }
-       // print(indexPath)
-    }
-    
-}
-
-// MARK: - SupermarketViewController
-extension SupermarketViewController: ProductsViewControllerDelegate {
-    
-    func didEndDisplayingHeaderView(_ section: Int) {
-        categoryTableView.selectRow(at: IndexPath(row: section + 1, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.middle)
-    }
-
-    func willDisplayHeaderView(_ section: Int) {
-        categoryTableView.selectRow(at: IndexPath(row: section, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.middle)
-    }
+//    }
 }

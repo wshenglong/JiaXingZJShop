@@ -18,8 +18,8 @@ class SupermarketHeadView: UITableViewHeaderFooterView {
         backgroundView = UIView()
         backgroundView?.backgroundColor = UIColor.clear
         
-        //contentView.backgroundColor = UIColor(red: 240 / 255.0, green: 240 / 255.0, blue: 240 / 255.0, alpha: 0.8)
-        contentView.backgroundColor = UIColor.blue
+        contentView.backgroundColor = UIColor(red: 240 / 255.0, green: 240 / 255.0, blue: 240 / 255.0, alpha: 0.8)
+        //contentView.backgroundColor = UIColor.blue
         buildTitleLabel()
         
     }

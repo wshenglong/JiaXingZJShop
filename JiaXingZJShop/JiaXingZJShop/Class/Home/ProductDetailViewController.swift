@@ -25,7 +25,7 @@ class ProductDetailViewController: BaseViewController {
     fileprivate var detailImageView: UIImageView?
     fileprivate var bottomView: UIView?
     fileprivate var yellowShopCar: YellowShopCarView?
-    fileprivate var goods: GoodHotModel?
+    private var goods: GoodHotModel?
     fileprivate var buyView: BuyView?
     fileprivate let shareActionSheet: LFBActionSheet = LFBActionSheet()
     

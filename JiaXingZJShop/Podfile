@@ -13,4 +13,5 @@ pod 'HandyJSON'
 pod 'SDWebImage'
 pod 'MJExtension'
 pod 'Kingfisher'
+pod 'LTScrollView'
 end

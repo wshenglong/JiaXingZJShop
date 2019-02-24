@@ -48,7 +48,7 @@ class CategoryCell: UITableViewCell {
 //        }
 //    }
     
-    var categorie: TabModel? {
+    var categorie: Child_list? {
         didSet {
             nameLabel.text = categorie?.category_name
         }

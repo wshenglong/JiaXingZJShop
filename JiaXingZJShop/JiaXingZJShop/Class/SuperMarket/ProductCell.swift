@@ -100,31 +100,31 @@ class ProductCell: UITableViewCell {
     }
 
     // MARK: - 模型set方法
-    var goods: GoodHotModel? {
+    var goods: GoodsModelDate? {
         didSet {
-            goodsImageView.sd_setImage(with: URL(string: goods!.pic_cover_small), placeholderImage: UIImage(named: "v2_placeholder_square"))
-            nameLabel.text = goods?.goods_name
-            if goods!.category_name == "买一赠一" {
-                giveImageView.isHidden = false
-            } else {
-                giveImageView.isHidden = true
-            }
-            
-            if goods!.category_id == 1 {
-                fineImageView.isHidden = false
-            } else {
-                fineImageView.isHidden = true
-            }
-            
-            // 点击
-            if discountPriceView != nil {
-                discountPriceView!.removeFromSuperview()
-            }
-            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.promotion_price)
-            addSubview(discountPriceView!)
-            
-            specificsLabel.text = goods?.category_name
-            buyView.goods = goods
+//            goodsImageView.sd_setImage(with: URL(string: goods!.pic_cover_small), placeholderImage: UIImage(named: "v2_placeholder_square"))
+//            nameLabel.text = goods?.goods_name
+//            if goods!.category_name == "买一赠一" {
+//                giveImageView.isHidden = false
+//            } else {
+//                giveImageView.isHidden = true
+//            }
+//
+//            if goods!.category_id == 1 {
+//                fineImageView.isHidden = false
+//            } else {
+//                fineImageView.isHidden = true
+//            }
+//
+//            // 点击
+//            if discountPriceView != nil {
+//                discountPriceView!.removeFromSuperview()
+//            }
+//            discountPriceView = DiscountPriceView(price: goods?.price, marketPrice: goods?.promotion_price)
+//            addSubview(discountPriceView!)
+//
+//            specificsLabel.text = goods?.category_name
+//            buyView.goods = goods
         }
     }
     
