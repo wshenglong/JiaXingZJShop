@@ -189,7 +189,7 @@ extension PageContentVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //关系实现
                 if productsVC != nil {
-                    //productsVC.categortsSelectedIndexPath = indexPath
+                    productsVC.categortsSelectedIndexPath = indexPath
                     
                 }
          print(indexPath)

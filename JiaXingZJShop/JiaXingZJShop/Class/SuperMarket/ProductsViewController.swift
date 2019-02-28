@@ -32,6 +32,7 @@ class ProductsViewController: AnimationViewController {
     fileprivate let headViewIdentifier   = "supermarketHeadView"
     fileprivate var lastOffsetY: CGFloat = 0
     fileprivate var isScrollDown         = false
+    fileprivate var isScrollDown2         = false
     
     var productsTableView: LFBTableView?
     weak var delegate: ProductsViewControllerDelegate?
@@ -40,7 +41,9 @@ class ProductsViewController: AnimationViewController {
     //商品模型组
     fileprivate var goodsArr: [[GoodsModelDate]]? {
         didSet {
+            isScrollDown2 = false
             productsTableView?.reloadData()
+            print("测试2")
         }
     }
     var goodsCategories : TabModel?
@@ -49,17 +52,21 @@ class ProductsViewController: AnimationViewController {
            // print(goosDate)
            // print("*** \n")
             var arr = [[GoodsModelDate]]()
+           
             let arrt = [GoodsModelDate]()
             for singegoods in (goodsCategories?.child_list)! {
+                var arr2 = [GoodsModelDate]()
                 var singegoodsIsLoadFinish = false
                 for singgoodsdate in goosDate! {
                     if singgoodsdate.category_id == singegoods.category_id {
-                        arr.append([singgoodsdate])
+                        arr2.append(singgoodsdate)
                         singegoodsIsLoadFinish = true
                     }
                     
                 }
-                if singegoodsIsLoadFinish == false {
+                if singegoodsIsLoadFinish {
+                    arr.append(arr2)
+                } else {
                     arr.append(arrt)
                 }
                // print(goodsArr)
@@ -79,7 +86,12 @@ class ProductsViewController: AnimationViewController {
     
     var categortsSelectedIndexPath: IndexPath? {
         didSet {
-            productsTableView?.selectRow(at: IndexPath(row: 0, section: (categortsSelectedIndexPath! as NSIndexPath).row), animated: true, scrollPosition: .top)
+            var goodsselectRow = categortsSelectedIndexPath?.row
+           //分类为空时，右边不做 选择 响应；如果为空时可添加提示
+//            if goodsArr![goodsselectRow!].count != 0 {
+//                   productsTableView?.selectRow(at: IndexPath(row: 0, section: (categortsSelectedIndexPath! as NSIndexPath).row), animated: true, scrollPosition: .top)
+//            }
+         productsTableView?.selectRow(at: IndexPath(row: 0, section: (categortsSelectedIndexPath! as NSIndexPath).row), animated: true, scrollPosition: .top)
         }
     }
     
@@ -140,12 +152,18 @@ class ProductsViewController: AnimationViewController {
 // MARK: UITableViewDelegate, UITableViewDataSource
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
-    //返回某个节中的行数
+    //返回某个节中的行数,如果没有可以做一个默认显示的数据
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if goodsArr?.count > 0 {
-            return goodsArr![section].count  //section.count无限row
+            print(section)
+            print(goodsArr![section].count)
+             //section.count无限row
+            if goodsArr![section].count != 0{
+                return goodsArr![section].count
+            } else {
+                return 1
+            }
         }
-        
         return 0
     }
     
@@ -157,8 +175,8 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     //为cell提供数据 ->单元格
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ProductCell.cellWithTableView(tableView)
-        let goods = goodsArr![(indexPath).section][(indexPath).row]
-        cell.goods = goods
+        //let goods = goodsArr![(indexPath).section][(indexPath).row]
+        //cell.goods = goods
         
         weak var tmpSelf = self
         cell.addProductClick = { (imageView) -> () in
@@ -184,19 +202,20 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
         if goodsCategories?.child_list?.count > 0 && goodsCategories!.child_list![section].category_name != nil {
             headView.titleLabel.text = goodsCategories!.child_list![section].category_name
         }
-        
+
         return headView
     }
     
     //节头消失时触发
     func tableView(_ tableView: UITableView, didEndDisplayingHeaderView view: UIView, forSection section: Int) {
-        
-        if delegate != nil && delegate!.responds(to: #selector(ProductsViewControllerDelegate.didEndDisplayingHeaderView(_:))) && isScrollDown {
-            delegate!.didEndDisplayingHeaderView!(section)
+
+        if  delegate != nil && delegate!.responds(to: #selector(ProductsViewControllerDelegate.didEndDisplayingHeaderView(_:))) && isScrollDown {
+            delegate!.didEndDisplayingHeaderView!(section)//通知左边table滚动
+            isScrollDown2 = true
         }
     }
-    
-    //节头将要显示时触发
+
+//    //节头将要显示时触发
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if delegate != nil && delegate!.responds(to: #selector(ProductsViewControllerDelegate.willDisplayHeaderView(_:))) && !isScrollDown {
             delegate!.willDisplayHeaderView!(section)
@@ -205,7 +224,7 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //响应选择单元格时触发的方法
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let goods = goodsArr![(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
+        //let goods = goodsArr![(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]
         
         //详情页面
         //let productDetailVC = ProductDetailViewController(goods: goods)
